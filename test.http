@@ -5,3 +5,19 @@ Content-Type: application/json
   "name": "MacBook Pro",
   "price": 2500
 }
+
+
+GET http://localhost:3000/api/products/1
+
+
+
+PUT http://localhost:3000/api/products/1
+Content-Type: application/json
+
+{
+  "name": "MacBook Pro M3",
+  "price": 3000
+}
+
+
+DELETE http://localhost:3000/api/products/1

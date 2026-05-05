@@ -14,4 +14,27 @@ const createProduct = async (data) => {
   return await Product.create({ name, price });
 };
 
-export default { getAllProducts, createProduct };
+const getProductById = async (id) => {
+  return await Product.findByPk(id);
+};
+
+const updateProduct = async (id, data) => {
+  const product = await Product.findByPk(id);
+
+  await product.update(data);
+
+  return product;
+};
+
+const deleteProduct = async (id) => {
+  const product = await Product.findByPk(id);
+  await product.destroy();
+};
+
+export default {
+  getAllProducts,
+  createProduct,
+  getProductById,
+  updateProduct,
+  deleteProduct,
+};
