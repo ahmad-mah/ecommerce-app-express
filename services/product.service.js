@@ -1,40 +1,33 @@
 import Product from "../models/product.model.js";
+import mongoose from "mongoose";
 
-const getAllProducts = async () => {
-  return await Product.findAll();
+const createProductService = async (data) => {
+  return await Product.create(data);
 };
 
-const createProduct = async (data) => {
-  const { name, price } = data;
+const getAllProductsService = async () => {
+  return await Product.find().lean();
+};
 
-  if (!name || !price) {
-    throw new Error("Name and price are required");
+const getProductByIdService = async (id) => {
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return null;
   }
-
-  return await Product.create({ name, price });
+  return await Product.findById(id);
 };
 
-const getProductById = async (id) => {
-  return await Product.findByPk(id);
+const updateProductService = async (id, updatedData) => {
+  return await Product.findByIdAndUpdate(id, updatedData);
 };
 
-const updateProduct = async (id, data) => {
-  const product = await Product.findByPk(id);
-
-  await product.update(data);
-
-  return product;
-};
-
-const deleteProduct = async (id) => {
-  const product = await Product.findByPk(id);
-  await product.destroy();
+const deleteProductService = async (id) => {
+  return await Product.findByIdAndDelete(id);
 };
 
 export default {
-  getAllProducts,
-  createProduct,
-  getProductById,
-  updateProduct,
-  deleteProduct,
+  createProductService,
+  getAllProductsService,
+  getProductByIdService,
+  updateProductService,
+  deleteProductService,
 };
