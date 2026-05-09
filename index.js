@@ -1,5 +1,6 @@
 import express from "express";
 import "./config/env.js";
+import mongoose from "mongoose";
 
 import mainRoutes from "./routes/main.routes.js";
 import productRoutes from "./routes/product.routes.js";
@@ -18,20 +19,9 @@ app.use("/api", productRoutes);
 app.use(errorHandler);
 const PORT = process.env.PORT || 3000;
 
-// test DB connection first
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("MySQL connected successfully ✅");
-
-    return sequelize.sync();
-  })
-  .then(() => {
-    console.log("DB Synced");
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("DB connection failed ❌", err);
-  });
+try {
+  await mongoose.connect(process.env.MONGO_URI);
+  app.listen(3000);
+} catch (error) {
+  console.log(error);
+}
