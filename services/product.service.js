@@ -6,14 +6,14 @@ const createProductService = async (data) => {
 };
 
 const getAllProductsService = async () => {
-  return await Product.find().lean();
+  return await Product.find().populate("user", "name email").lean();
 };
 
 const getProductByIdService = async (id) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return null;
   }
-  return await Product.findById(id);
+  return await Product.findById(id).populate("user", "name email").lean();
 };
 
 const updateProductService = async (id, updatedData) => {

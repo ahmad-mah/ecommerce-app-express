@@ -5,7 +5,8 @@ Content-Type: application/json
   "title": "MacBook Pro",
   "price": 2500,
   "description": "Such a great PRoduct",
-  "imageUrl":"https://static.vecteezy.com/system/resources/thumbnails/057/068/323/small/single-fresh-red-strawberry-on-table-green-background-food-fruit-sweet-macro-juicy-plant-image-photo.jpg"
+  "imageUrl":"https://static.vecteezy.com/system/resources/thumbnails/057/068/323/small/single-fresh-red-strawberry-on-table-green-background-food-fruit-sweet-macro-juicy-plant-image-photo.jpg",
+  "user":"69ffbc061a45d9bd4b113588"
 }
 
 
@@ -23,3 +24,21 @@ Content-Type: application/json
 
 
 DELETE http://localhost:3000/api/products/69feae0001bf7b5f16b05d6d
+
+
+
+
+
+
+
+
+POST http://localhost:3000/api/user
+Content-Type: application/json
+
+{
+  "name": "Ahmed",
+  "email": "ahmed@test.com"
+}
+
+
+GET http://localhost:3000/api/user
