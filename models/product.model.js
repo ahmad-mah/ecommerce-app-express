@@ -20,6 +20,12 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    stock: {
+      type: Number,
+      required: true,
+      min: 0,
+      default: 0,
+    },
     user: {
       type: mongoose.Types.ObjectId,
       required: true,
