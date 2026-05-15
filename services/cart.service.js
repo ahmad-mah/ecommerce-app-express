@@ -9,8 +9,7 @@ const addToCart = async (body, userId) => {
   _validateIdAndQuantity(id, quantityNumber);
   const product = await _validateProduct(id, quantityNumber);
 
-  let cart = await Ca;
-  rt.findOne({ user: userId });
+  let cart = await Cart.findOne({ user: userId });
 
   if (!cart) {
     cart = await Cart.create({

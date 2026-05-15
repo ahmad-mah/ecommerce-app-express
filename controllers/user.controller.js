@@ -10,7 +10,7 @@ const createUserController = async (req, res) => {
 const getUserByIdController = async (req, res) => {
   try {
     const users = await userService.getUserService(req.params.id);
-    if (!user) {
+    if (!users) {
       return res.status(404).json({
         message: "User not found",
       });
